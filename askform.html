@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>แบบฟอร์มขอใช้บริการตรวจสอบ Journal Impact Factor</title>
+<title>Form</title>
 
 <script type="text/javascript" src="./ex_files/view.js"></script>
 <meta charset="utf-8">
@@ -13,69 +13,69 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-<!--
+
 .style1 {color: #FFFFFF}
 .style2 {color: #333333}
--->
+
+.bg {
+	background-image: url("./ex_files/P5230085.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	
+
+}
+
+.bg2{
+	background-color: rgba(255,255,255,0.8);
+	-webkit-border-radius:50px;
+	-moz-border-radius:50px;
+	border-radius:50px;
+
+
+}
+
 </style>
 </head>
-<body id="main_body" class="no_guidelines safari">
+<body id="main_body" class="bg">
 
-	<img id="top" src="./ex_files/top.png" alt="">
+	
 	<div id="form_container">
-
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6 bg2">
 		<form role="form" id="form_163542" class="appnitro" method="post" action="http://mis.lib.nu.ac.th/libcrm/form_r_ask.php">
-					<div class="form-group">
-					  <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#4B75B3">
-                        <tbody><tr>
-                          <td height="60" align="center" valign="middle"><div align="center">
-                            <h2 class="style1"><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h2>
-                          </div></td>
-                        </tr>
-                      </tbody></table>
-					  <table width="100%" border="0">
-                        <tbody><tr>
-                          <td><div align="right"><img src="./ex_files/flag.gif" width="128" height="25" border="0" usemap="#Map">
-                              <map name="Map" id="Map">
-                                <area shape="rect" coords="7,3,63,23" href="http://mis.lib.nu.ac.th/libcrm/form_ask.html">
-                                <area shape="rect" coords="66,5,124,23" href="http://mis.lib.nu.ac.th/libcrm/form_ask_e.html">
-                                </map>
-                          </div></td>
-                        </tr></tbody></table>
-					  <table width="100%" border="0">
-                      </table>
-
-					  						สำนักหอสมุดขอสงวนสิทธิ์ในการที่จะไม่ตอบคำถามที่บรรณารักษ์พิจารณาแล้วเห็นว่าไม่ใช่คำถามทางวิชาการ<br>
-					  <br>
-					  กรุณากรอกแบบฟอร์มและคลิก Ask เพื่อส่งคำถามของท่านไปยังบรรณารักษ์ตอบคำถามและช่วยการค้นคว้า คำถามทุกคำถามจะมีการตอบกลับทาง e-mail ภายใน 24 ชั่วโมงในวัน เวลาทำการ
-					  <p></p>
+					<div class="form-group">                
+					<h3><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h2>
+                          
+	
 		</div>
 			<ul>
 
 
 						<div class="row">
 						<div class="col-md-2">
-		<label class="form-group" for="element_1">*ชื่อ (Firstname)</label>
+		<label class="form-group" for="element_1">ชื่อ (Firstname)</label>
 			<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value=""><br>
 		</div></div>
 
 		<div class="row">
 		<div class="col-md-2">
-		<label class="form-group" for="element_1">*นามสกุล (Lastname) </label
+		<label class="form-group" for="element_1">นามสกุล (Lastname) </label>
 		<span>
 			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value=""><br>
 		</span></div></div>
 
 		<div class="row">
 		<div class="col-md-2">
-		<label class="description" for="element_2">*E-mail </label>
+		<label class="form-group" for="element_2">E-mail </label>
 		<div>
 			<input id="email" name="email" class="form-control" type="text" maxlength="255" value=""><br>
 		</div></div></div>
 
 		<div class="row">
 		<div class="col-md-2">
-		<label class="description" for="element_3">โทรศัพท์ (Telephone) </label>
+		<label class="form-group" for="element_3">โทรศัพท์ (Telephone) </label>
 		<div>
 			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value=""><br>
 		</div></div></div>
@@ -99,7 +99,7 @@
 		</div>
 		</span>
 		<br>
-		<label class="description" for="element_7">หน่วยงาน (Institute) </label>
+		<label class="form-group" for="element_7">หน่วยงาน (Institute) </label>
 		<span>
 
 			<div class="radio">
@@ -135,7 +135,7 @@
 <div class="col-md-4">
 	<input id="i_other" name="i_other" class="form-control" type="text" maxlength="255" value="">
 		</span></div></div>
-		<br><label class="description" for="element_4">*คำถาม (Question)</label>
+		<br><label class="form-group" for="element_4">*คำถาม (Question)</label>
 		<div class="row">
 		<div class="col-md-4">
 		<div>
@@ -151,17 +151,20 @@
 					<div class="row">
 					<div class="col-md-2">
 				<input type="text" class="form-control" name="capt"></div></div>ป้อนตัวอักษรด้านบน<br><br>
-		    <input id="submit" class="btn btn-danger" type="reset" name="submit2" value="Cancel"></tb>
+		    
 				<input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Submit">
+				<input id="submit" class="btn btn-danger" type="reset" name="submit2" value="Cancel"></tb>
 			  </li>
 			</ul>
 		</form>
+
 		<div id="footer"><span class="style2">
 		<div class="alert alert-danger" align="center">
     หากท่านมีปัญหาหรือข้อสงสัยในการใช้บริการ
   </div>
-		</span></div>
+		</span></div></div>
+	<div class="col-md-3"></div>
 	</div>
-	<img id="bottom" src="./ex_files/bottom.png" alt="">
+	
 
 </body></html>
