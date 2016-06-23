@@ -22,7 +22,7 @@
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
-	
+
 
 }
 
@@ -39,42 +39,43 @@
 </head>
 <body id="main_body" class="bg">
 
-	
+
 	<div id="form_container">
 		<div class="col-md-3">
 		</div>
 		<div class="col-md-6 bg2">
 		<form role="form" id="form_163542" class="appnitro" method="post" action="http://mis.lib.nu.ac.th/libcrm/form_r_ask.php">
-					<div class="form-group">                
+					<div class="form-group">
 					<h3><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h2>
-                          
-	
+
+
 		</div>
 			<ul>
+				<div class="row">
+				<div class="col-md-4">
+				<label class="form-group" for="element_1">ชื่อ (Firstname) </label>
+				<span>
+
+				<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value=""><br>
+				</span></div>
 
 
-						<div class="row">
-						<div class="col-md-2">
-		<label class="form-group" for="element_1">ชื่อ (Firstname)</label>
-			<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value=""><br>
+						<div class="col-md-4">
+		<label class="form-group" for="element_1">นามสกุล (Lastname)</label>
+			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value=""><br>
+
+
 		</div></div>
 
 		<div class="row">
-		<div class="col-md-2">
-		<label class="form-group" for="element_1">นามสกุล (Lastname) </label>
-		<span>
-			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value=""><br>
-		</span></div></div>
-
-		<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-5">
 		<label class="form-group" for="element_2">E-mail </label>
 		<div>
 			<input id="email" name="email" class="form-control" type="text" maxlength="255" value=""><br>
 		</div></div></div>
 
 		<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-3">
 		<label class="form-group" for="element_3">โทรศัพท์ (Telephone) </label>
 		<div>
 			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value=""><br>
@@ -137,7 +138,7 @@
 		</span></div></div>
 		<br><label class="form-group" for="element_4">*คำถาม (Question)</label>
 		<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-10">
 		<div>
 			<textarea name="question" cols="65" rows="5" class="form-control" id="question"></textarea>
 		</div></div></div>
@@ -151,7 +152,7 @@
 					<div class="row">
 					<div class="col-md-2">
 				<input type="text" class="form-control" name="capt"></div></div>ป้อนตัวอักษรด้านบน<br><br>
-		    
+
 				<input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Submit">
 				<input id="submit" class="btn btn-danger" type="reset" name="submit2" value="Cancel"></tb>
 			  </li>
@@ -165,6 +166,6 @@
 		</span></div></div>
 	<div class="col-md-3"></div>
 	</div>
-	
+
 
 </body></html>
