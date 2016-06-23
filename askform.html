@@ -45,34 +45,41 @@
 					  <table width="100%" border="0">
                       </table>
 
-					  						<li class="buttons">สำนักหอสมุดขอสงวนสิทธิ์ในการที่จะไม่ตอบคำถามที่บรรณารักษ์พิจารณาแล้วเห็นว่าไม่ใช่คำถามทางวิชาการ<br>
+					  						สำนักหอสมุดขอสงวนสิทธิ์ในการที่จะไม่ตอบคำถามที่บรรณารักษ์พิจารณาแล้วเห็นว่าไม่ใช่คำถามทางวิชาการ<br>
 					  <br>
 					  กรุณากรอกแบบฟอร์มและคลิก Ask เพื่อส่งคำถามของท่านไปยังบรรณารักษ์ตอบคำถามและช่วยการค้นคว้า คำถามทุกคำถามจะมีการตอบกลับทาง e-mail ภายใน 24 ชั่วโมงในวัน เวลาทำการ
 					  <p></p>
 		</div>
 			<ul>
 
-					<li id="li_1">
-		<label class="form-group" for="element_1">*ชื่อ-สกุล  (Name) </label>
 
+						<div class="row">
+						<div class="col-md-2">
+		<label class="form-group" for="element_1">*ชื่อ (Firstname)</label>
+			<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value=""><br>
+		</div></div>
+
+		<div class="row">
+		<div class="col-md-2">
+		<label class="form-group" for="element_1">*นามสกุล (Lastname) </label
 		<span>
-			<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value="">
-			<label>First Name </label>
-		</span>
-		<span>
-			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value="">
-			<label>Last Name </label>
-		</span>		</li>		<li id="li_2">
+			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value=""><br>
+		</span></div></div>
+
+		<div class="row">
+		<div class="col-md-2">
 		<label class="description" for="element_2">*E-mail </label>
 		<div>
-			<input id="email" name="email" class="form-control" type="text" maxlength="255" value="">
-		</div>
-		</li>		<li id="li_3">
+			<input id="email" name="email" class="form-control" type="text" maxlength="255" value=""><br>
+		</div></div></div>
+
+		<div class="row">
+		<div class="col-md-2">
 		<label class="description" for="element_3">โทรศัพท์ (Telephone) </label>
 		<div>
-			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value="">
-		</div>
-		</li>		<li id="li_6">
+			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value=""><br>
+		</div></div></div>
+
 		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
 		<span>
 			<div class="radio">
@@ -91,51 +98,59 @@
 			<label><input type="radio" name="optradio">บุคคลภายนอก (Other)</label>
 		</div>
 		</span>
-		</li>		<li id="li_7">
+		<br>
 		<label class="description" for="element_7">หน่วยงาน (Institute) </label>
 		<span>
-			<input id="element_7_1" name="element_7" class="element radio" type="radio" value="จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)">
-<label class="choice" for="element_7_1">จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University) <select class="btn btn-default dropdown-toggle" name="i_other1" id="i_other1">
-  <option value="คณะสหเวชศาสตร์">คณะสหเวชศาสตร์</option>
-  <option value="คณะสถาปัตยกรรมศาสตร์">คณะสถาปัตยกรรมศาสตร์</option>
-  <option value="คณะอักษรศาสตร์">คณะอักษรศาสตร์</option>
-  <option value="คณะพาณิชยศาสตร์และการบัญชี">คณะพาณิชยศาสตร์และการบัญชี</option>
-  <option value="คณะนิเทศศาสตร์">คณะนิเทศศาสตร์</option>
-  <option value="คณะทันตแพทยศาสตร์">คณะทันตแพทยศาสตร์</option>
-  <option value="คณะเศรษฐศาสตร์">คณะเศรษฐศาสตร์</option>
-  <option value="คณะครุศาสตร์">คณะครุศาสตร์</option>
-  <option value="คณะวิศวกรรมศาสตร์">คณะวิศวกรรมศาสตร์</option>
-  <option value="คณะศิลปกรรมศาสตร์">คณะศิลปกรรมศาสตร์</option>
-  <option value="คณะนิติศาสตร์">คณะนิติศาสตร์</option>
-  <option value="คณะแพทยศาสตร์">คณะแพทยศาสตร์</option>
-  <option value="คณะพยาบาลศาสตร์">คณะพยาบาลศาสตร์</option>
-  <option value="คณะเภสัชศาสตร์">คณะเภสัชศาสตร์</option>
-  <option value="คณะรัฐศาสตร์">คณะรัฐศาสตร์</option>
-  <option value="คณะจิตวิทยา">คณะจิตวิทยา</option>
-  <option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
-  <option value="คณะวิทยาศาสตร์การกีฬา">คณะวิทยาศาสตร์การกีฬา</option>
-  <option value="คณะสัตวแพทยศาสตร์">คณะสัตวแพทยศาสตร์</option>
-  <option value="บัณฑิตวิทยาลัย">บัณฑิตวิทยาลัย</option>
-  <option value="สำนักวิชาทรัพยากรการเกษตร">สำนักวิชาทรัพยากรการเกษตร</option>
-</select></label>
 
-<input id="element_7_2" name="element_7" class="element radio" type="radio" value="มหาวิทยาลัย/หน่วยงานอื่น (Other)">
-<label class="choice" for="element_7_2">มหาวิทยาลัย/หน่วยงานอื่น (Other)  โปรดระบุ (Please specify)</label>
+			<div class="radio">
+				<label><input type="radio" name="optradio">จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)</label>
+				<select class="btn btn-default dropdown-toggle" name="i_other1" id="i_other1">
+  		<option value="คณะสหเวชศาสตร์">คณะสหเวชศาสตร์</option>
+  		<option value="คณะสถาปัตยกรรมศาสตร์">คณะสถาปัตยกรรมศาสตร์</option>
+  		<option value="คณะอักษรศาสตร์">คณะอักษรศาสตร์</option>
+  		<option value="คณะพาณิชยศาสตร์และการบัญชี">คณะพาณิชยศาสตร์และการบัญชี</option>
+  		<option value="คณะนิเทศศาสตร์">คณะนิเทศศาสตร์</option>
+  		<option value="คณะทันตแพทยศาสตร์">คณะทันตแพทยศาสตร์</option>
+  		<option value="คณะเศรษฐศาสตร์">คณะเศรษฐศาสตร์</option>
+  		<option value="คณะครุศาสตร์">คณะครุศาสตร์</option>
+  		<option value="คณะวิศวกรรมศาสตร์">คณะวิศวกรรมศาสตร์</option>
+  		<option value="คณะศิลปกรรมศาสตร์">คณะศิลปกรรมศาสตร์</option>
+  		<option value="คณะนิติศาสตร์">คณะนิติศาสตร์</option>
+  		<option value="คณะแพทยศาสตร์">คณะแพทยศาสตร์</option>
+  		<option value="คณะพยาบาลศาสตร์">คณะพยาบาลศาสตร์</option>
+  		<option value="คณะเภสัชศาสตร์">คณะเภสัชศาสตร์</option>
+  		<option value="คณะรัฐศาสตร์">คณะรัฐศาสตร์</option>
+  		<option value="คณะจิตวิทยา">คณะจิตวิทยา</option>
+  		<option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+  		<option value="คณะวิทยาศาสตร์การกีฬา">คณะวิทยาศาสตร์การกีฬา</option>
+  		<option value="คณะสัตวแพทยศาสตร์">คณะสัตวแพทยศาสตร์</option>
+  		<option value="บัณฑิตวิทยาลัย">บัณฑิตวิทยาลัย</option>
+  		<option value="สำนักวิชาทรัพยากรการเกษตร">สำนักวิชาทรัพยากรการเกษตร</option>
+</select></label></div>
 
-<input id="i_other" name="i_other" class="form-control" type="text" maxlength="255" value="">
-		</span>
-		</li>		<li id="li_4">
-		<label class="description" for="element_4">*คำถาม (Question)</label>
+<div class="radio">
+	<label><input type="radio" name="optradio">มหาวิทยาลัย/หน่วยงานอื่น (Other)  โปรดระบุ (Please specify)</label>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input id="i_other" name="i_other" class="form-control" type="text" maxlength="255" value="">
+		</span></div></div>
+		<br><label class="description" for="element_4">*คำถาม (Question)</label>
+		<div class="row">
+		<div class="col-md-4">
 		<div>
 			<textarea name="question" cols="65" rows="5" class="form-control" id="question"></textarea>
-		</div>
+		</div></div></div>
 		</li>
 
-					<li class="buttons">สำนักหอสมุดขอสงวนสิทธิ์ในการที่จะไม่ตอบคำถามที่บรรณารักษ์พิจารณาแล้วเห็นว่าไม่ใช่คำถามทางวิชาการ<br>
+					*สำนักหอสมุดขอสงวนสิทธิ์ในการที่จะไม่ตอบคำถามที่บรรณารักษ์พิจารณาแล้วเห็นว่าไม่ใช่คำถามทางวิชาการ<br>
 					  <br>
+
 			    <input type="hidden" name="form_id" value="163542">
 			    <img src="./ex_files/captcha_img.php"></br></br>
-				<input type="text" class="form-control" name="capt">ป้อนตัวอักษรด้านบน<br><br>
+					<div class="row">
+					<div class="col-md-2">
+				<input type="text" class="form-control" name="capt"></div></div>ป้อนตัวอักษรด้านบน<br><br>
 		    <input id="submit" class="btn btn-danger" type="reset" name="submit2" value="Cancel"></tb>
 				<input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Submit">
 			  </li>
@@ -143,7 +158,7 @@
 		</form>
 		<div id="footer"><span class="style2">
 		<div class="alert alert-danger" align="center">
-    <strong>Success!</strong> หากท่านมีปัญหาหรือข้อสงสัยในการใช้บริการ
+    หากท่านมีปัญหาหรือข้อสงสัยในการใช้บริการ
   </div>
 		</span></div>
 	</div>
