@@ -35,7 +35,12 @@
 
 }
 
+.center {
+	float: center;
+}
+
 </style>
+
 </head>
 <body id="main_body" class="bg">
 
@@ -43,48 +48,48 @@
 	<div id="form_container">
 		<div class="col-md-3">
 		</div>
-		<div class="col-md-6 bg2">
-		<form role="form" id="form_163542" class="appnitro" method="post" action="http://mis.lib.nu.ac.th/libcrm/form_r_ask.php">
+		<div class="col-md-6 bg2" style="padding-top: 25px;">
+		<form role="form" id="form_163542" class="appnitro" method="post" action="http://www.google.co.th">
 					<div class="form-group">
-					<h3><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h2>
+					<h3 style="padding-left: 130px; padding-bottom: 25px;"><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h2>
 
 
 		</div>
-			<ul>
+			<ul style="margin-left:40px">
 				<div class="row">
-				<div class="col-md-4">
-				<label class="form-group" for="element_1">ชื่อ (Firstname) </label>
+				<div class="col-md-5">
+				<label class="form-group" for="element_1" >ชื่อ (Firstname)*</label>
 				<span>
 
-				<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value=""><br>
+				<input id="fname" name="fname" class="form-control" maxlength="20" size="14" value="" required><br>
 				</span></div>
 
-
-						<div class="col-md-4">
-		<label class="form-group" for="element_1">นามสกุล (Lastname)</label>
-			<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value=""><br>
+				
+				<div class="col-md-5">
+				<label class="form-group" for="element_1">นามสกุล (Lastname)*</label>
+				<input id="lname" name="lname" class="form-control" maxlength="255" size="14" value="" required><br>
 
 
 		</div></div>
 
 		<div class="row">
 		<div class="col-md-5">
-		<label class="form-group" for="element_2">E-mail </label>
+		<label class="form-group" for="element_2" >อีเมล์ (E-mail)*</label>
 		<div>
-			<input id="email" name="email" class="form-control" type="text" maxlength="255" value=""><br>
-		</div></div></div>
+			<input id="email" name="email" class="form-control" type="text" maxlength="255" value="" required><br>
+		</div></div>
 
-		<div class="row">
-		<div class="col-md-3">
-		<label class="form-group" for="element_3">โทรศัพท์ (Telephone) </label>
+		
+		<div class="col-md-5">
+		<label class="form-group" for="element_3" >โทรศัพท์ (Telephone)*</label>
 		<div>
-			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value=""><br>
+			<input id="tel" name="tel" class="form-control" type="text" maxlength="255" value="" required><br>
 		</div></div></div>
 
 		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
 		<span>
 			<div class="radio">
-		 <label><input type="radio" name="optradio">นิสิต ป.ตรี  (Undergraduate)</label>
+		 <label><input type="radio" name="optradio" checked>นิสิต ป.ตรี  (Undergraduate)</label>
 	 	</div>
 	 	<div class="radio">
 		 <label><input type="radio" name="optradio">บัณฑิตศึกษา (Graduate Student)</label>
@@ -104,7 +109,8 @@
 		<span>
 
 			<div class="radio">
-				<label><input type="radio" name="optradio">จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)</label>
+				<label><input type="radio" name="optradio2" checked>จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)</label>
+				<br>
 				<select class="btn btn-default dropdown-toggle" name="i_other1" id="i_other1">
   		<option value="คณะสหเวชศาสตร์">คณะสหเวชศาสตร์</option>
   		<option value="คณะสถาปัตยกรรมศาสตร์">คณะสถาปัตยกรรมศาสตร์</option>
@@ -130,17 +136,17 @@
 </select></label></div>
 
 <div class="radio">
-	<label><input type="radio" name="optradio">มหาวิทยาลัย/หน่วยงานอื่น (Other)  โปรดระบุ (Please specify)</label>
+	<label><input type="radio" name="optradio2">มหาวิทยาลัย/หน่วยงานอื่น (Other)  โปรดระบุ (Please specify)
 </div>
 <div class="row">
 <div class="col-md-4">
 	<input id="i_other" name="i_other" class="form-control" type="text" maxlength="255" value="">
 		</span></div></div>
-		<br><label class="form-group" for="element_4">*คำถาม (Question)</label>
+		<br><label class="form-group" for="element_4">คำถาม (Question)*</label>
 		<div class="row">
 		<div class="col-md-10">
 		<div>
-			<textarea name="question" cols="65" rows="5" class="form-control" id="question"></textarea>
+			<textarea name="question" cols="65" rows="5" class="form-control" id="question" required></textarea>
 		</div></div></div>
 		</li>
 
