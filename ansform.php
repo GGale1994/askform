@@ -1,36 +1,23 @@
 <?php
-	require("config.php");
-	echo '<script> alert("ระบบจะส่งการร้องขอไปยังบรรณารักษ์ กรุณารอการตอบรับจากบรรณารักษ์ทางอีเมล์ที่ท่านได้กรอกไป")</script>';
-	if($_POST['optradio']!='Other')
+	session_start();
+	require_once("Login-session/config.php");
+
+	if(!isset($_SESSION['UserID']))
 	{
-		$status = $_POST['optradio'];
+		echo "Please Login!";
+		exit();
 	}
-	else
-	{
-		$status = $_POST['i_other'];
+	
+	//*** Update Last Stay in Login System
+	$sql = "UPDATE member SET LastUpdate = NOW() WHERE UserID = '".$_SESSION["UserID"]."' ";
+	$query = mysqli_query($conn,$sql);
 
-	}
+	//*** Get User Login
+	$strSQL = "SELECT * FROM member WHERE UserID = '".$_SESSION['UserID']."' ";
+	$objQuery = mysqli_query($conn,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+?>
 
-	if($_POST['optradio2']=='Chulalongkorn')
-	{
-		$institute = "จุฬาลงกรณ์มหาวิทยาลัย ".$_POST['i_other1'];
-	}
-	else
-	{
-		$institute = "มหาวิทยาลัย/หน่วยงานอื่น(".$_POST['i_other3'].")";
-	}
-
-	$queryadd = "INSERT user_info(fname,lname,email,tel,status,institute) VALUES ('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['tel']."','".$status."','".$institute."')";
-	$conn->query($queryadd);
-
-	$queryfind = "SELECT user_id FROM user_info WHERE fname like '".$_POST['fname']."' and lname like '".$_POST['lname']."'";
-	$result = $conn->query($queryfind);
-    //printf("Error: %s\n", mysqli_error($conn));
-	$row = mysqli_fetch_array($result);
-
-	$queryadd2 = "INSERT quest_ans(user_id_fk,question) VALUES ('".$row['user_id']."','".$_POST['question']."')";
-	$conn->query($queryadd2);
- ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0044)http://mis.lib.nu.ac.th/libcrm/form_ask.html -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -82,10 +69,10 @@
 		<div class="col-md-3">
 		</div>
 		<div class="col-md-6 bg2" style="padding-top: 25px;">
-		
+		<form role="form" id="form_163542" class="appnitro" method="post" action="">
 					<div class="form-group">
-					<h3 style="padding-left: 130px; padding-bottom: 5px;"><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h3>
-					<h4 style="padding-left: 250px; padding-bottom: 10px;">สรุปรายละเอียด</h4>
+					<h3 style="padding-left: 130px; padding-bottom: 25px;"><strong>ตอบแบบสอบถาม (</strong><strong>Answer Question)</strong></h3>
+					
 		</div>
 			<ul style="margin-left:40px">
 				<div class="row">
@@ -134,10 +121,15 @@
 		</div></div>
 		</li>
 
-					<div class="row" style="padding-left: 140px; padding-top: 50px;"><strong><font color="red">**ระบบจะส่งการร้องขอไปยังบรรณารักษ์ <br> </div><div class="row" style="padding-left: 70px;">กรุณารอการตอบรับจากบรรณารักษ์ทางอีเมล์ที่ท่านได้กรอกไป** <br></font></strong>
-					  <br></div>
-
-			   <a href="askform.html" style="padding-left: 235px;"><button type="button" class="btn btn-default">Close</button></a>
+			<br><label class="form-group" for="element_4">คำตอบ (Answer)</label>
+		<div class="row">
+		<div class="col-md-10">
+		<div>
+			<p><?php echo $_POST['answer'] ?></p>
+		</div></div>
+		</li>
+			   <input type="submit" class="btn btn-default" value="Submit">
+			   <input id="reset" class="btn btn-danger" type="reset" name="reset" value="Reset">
 				</tb>
 			  </li>
 			</ul>

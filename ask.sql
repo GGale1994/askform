@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2016 at 05:47 AM
+-- Generation Time: Jun 29, 2016 at 08:28 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -23,6 +23,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `member`
+--
+
+DROP TABLE IF EXISTS `member`;
+CREATE TABLE IF NOT EXISTS `member` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `LoginStatus` int(1) NOT NULL DEFAULT '0',
+  `LastUpdate` datetime NOT NULL DEFAULT '0001-01-01 00:00:00',
+  PRIMARY KEY (`UserID`),
+  UNIQUE KEY `Username` (`Username`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`UserID`, `Username`, `Password`, `Name`, `LoginStatus`, `LastUpdate`) VALUES
+(5, 'admin', 'admin', 'Benz', 0, '0001-01-01 00:00:00'),
+(6, 'admin2', 'admin2', 'Gale', 0, '0001-01-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quest_ans`
 --
 
@@ -31,11 +57,18 @@ CREATE TABLE IF NOT EXISTS `quest_ans` (
   `quest_ans_id` int(11) NOT NULL AUTO_INCREMENT,
   `question` text NOT NULL,
   `answer` text,
-  `admin_name` varchar(40) DEFAULT NULL,
+  `member_name` varchar(40) DEFAULT NULL,
   `user_id_fk` int(11) NOT NULL,
   PRIMARY KEY (`quest_ans_id`),
   KEY `quest_ans_id` (`user_id_fk`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `quest_ans`
+--
+
+INSERT INTO `quest_ans` (`quest_ans_id`, `question`, `answer`, `member_name`, `user_id_fk`) VALUES
+(63, 'ยืนหนังสือย้อนหลังจะโดนปรับหรือเปล่าครับ', NULL, NULL, 98);
 
 -- --------------------------------------------------------
 
@@ -53,7 +86,14 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   `status` varchar(80) NOT NULL COMMENT 'สถานภาพ',
   `institute` varchar(80) NOT NULL COMMENT 'หน่วยงาน',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_info`
+--
+
+INSERT INTO `user_info` (`user_id`, `fname`, `lname`, `email`, `tel`, `status`, `institute`) VALUES
+(98, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์');
 
 --
 -- Constraints for dumped tables
