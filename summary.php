@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require("config.php");
 	echo '<script> alert("ระบบจะส่งการร้องขอไปยังบรรณารักษ์ กรุณารอการตอบรับจากบรรณารักษ์ทางอีเมล์ที่ท่านได้กรอกไป")</script>';
 	if($_POST['optradio']!='Other')
@@ -106,7 +106,7 @@
 
 		<div class="row">
 		<div class="col-md-5">
-		<label class="form-group" for="element_2" >อีเมล (E-mail)*</label>
+		<label class="form-group" for="element_2" >อีเมล (E-mail)</label>
 		<div>
 			<p><?php echo $_POST['email'] ?></p><br>
 		</div></div>
@@ -114,7 +114,7 @@
 
 		<div class="col-md-5">
 		<label class="form-group" for="element_3" >โทรศัพท์ (Telephone)</label>
-		
+
 			<p><?php echo $_POST['tel'] ?></p>	</div></div>
 
 		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
