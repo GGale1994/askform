@@ -1,21 +1,10 @@
- <?php /*
-		// Author:- ScriptsJungle
-		// Version :- 1.0
-		// Project Name :- Php Events Calendar
-		// You have the right to modify,use and re-distribute this script
-		// without informing anyone.
-		// As a curtusey you can keep my name there as it is.
-		*/
-		/* Name of the database */
-		define('DB_NAME', 'ask');
-		/* Name of the database user */
-		define('DB_USER', 'root');
-		/* Password for the database */
-		define('DB_PASSWORD', '');
-		/* Host name for the database */
-		define('DB_HOST', 'localhost');
-		/* Default Charset */
-		define('DB_CHARSET', 'utf8');
-		/* Default Collate */
-		define('DB_COLLATE', '');
+ <?php 
+ 		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$database = "ask";
+
+		// Create connection
+		$conn = new mysqli($servername, $username, $password,$database);
+		mysqli_set_charset($conn,"utf8");
 		?>
