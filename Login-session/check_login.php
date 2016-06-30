@@ -1,7 +1,12 @@
 <?php
 	session_start();
 
-	require_once("config.php");
+   $hostname = "localhost";
+   $username = "root";
+   $password = ""; 
+   $database = "ask";
+   $conn = new mysqli($hostname, $username, $password,$database);
+      mysqli_set_charset($conn,"utf8");
 	
 	$strUsername = mysqli_real_escape_string($conn,$_POST['txtUsername']);
 	$strPassword = mysqli_real_escape_string($conn,$_POST['txtPassword']);
@@ -33,7 +38,7 @@
 			session_write_close();
 
 			//*** Go to Main page
-			header("location:../ansform.php");
+			header("location:../ansselect.php"); // have to change later
 		}
 			
 	}

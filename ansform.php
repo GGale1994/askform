@@ -2,20 +2,6 @@
 	session_start();
 	require_once("Login-session/config.php");
 
-	if(!isset($_SESSION['UserID']))
-	{
-		echo "Please Login!";
-		exit();
-	}
-	
-	//*** Update Last Stay in Login System
-	$sql = "UPDATE member SET LastUpdate = NOW() WHERE UserID = '".$_SESSION["UserID"]."' ";
-	$query = mysqli_query($conn,$sql);
-
-	//*** Get User Login
-	$strSQL = "SELECT * FROM member WHERE UserID = '".$_SESSION['UserID']."' ";
-	$objQuery = mysqli_query($conn,$strSQL);
-	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
