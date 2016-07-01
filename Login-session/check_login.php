@@ -35,10 +35,11 @@
 
 			//*** Session
 			$_SESSION["UserID"] = $objResult["UserID"];
+			$_SESSION["Name"] = $objResult["Name"];
 			session_write_close();
 
 			//*** Go to Main page
-			header("location:../ansselect.php"); // have to change later
+			header("location:../index.php"); // have to change later
 		}
 			
 	}

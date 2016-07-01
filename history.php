@@ -66,6 +66,8 @@ function checkdel(id){
 
 	<div id="form_container">
 		<div class="col-md-2">
+		<br><div class="row"><div class="col-md-1"></div><div class="col-md-5 bg2"><a href="index.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+			</div>
 		</div>
 		<div class="col-md-8 bg2" style="padding-top: 25px;">
 

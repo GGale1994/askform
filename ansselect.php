@@ -66,6 +66,8 @@ function checkdel(id){
 
 	<div id="form_container">
 		<div class="col-md-2">
+			<br><div class="row"><div class="col-md-1"></div><div class="col-md-5 bg2"><a href="index.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+			</div>
 		</div>
 		<div class="col-md-8 bg2" style="padding-top: 25px;">
 	
@@ -80,7 +82,7 @@ function checkdel(id){
 				
 			<?php 
 
-				$selectquery = "SELECT user_info.user_id,quest_ans.question,user_info.fname,user_info.lname FROM quest_ans,user_info WHERE user_info.user_id = quest_ans.user_id_fk and quest_ans.answer IS NULL";
+				$selectquery = "SELECT quest_ans.quest_ans_id,user_info.user_id,quest_ans.question,user_info.fname,user_info.lname FROM quest_ans,user_info WHERE user_info.user_id = quest_ans.user_id_fk and quest_ans.answer IS NULL";
 				$result = $conn->query($selectquery);
 				$number = 1;
 				while ($row = mysqli_fetch_array($result)) 
@@ -89,10 +91,12 @@ function checkdel(id){
 					'.$row['question'].'</td><td colspan="2">'.$row['fname'].' '.$row['lname'].
 					'</td><td colspan="2"><form action="ansform.php" method="post">
 					<input class="btn btn-default btn-success" type="submit" name="submit" value="ตอบคำถาม">
-					<input type="hidden" name="user_id" value='.$row['user_id'].'></form>
+					<input type="hidden" name="user_id" value='.$row['user_id'].'>
+					<input type="hidden" name="quest_ans_id" value='.$row['quest_ans_id'].'>
+					</form>
 					</td><td>
 					<button class="btn btn-default btn-danger"  name="delete" value=""
-					onclick="checkdel('.$row['user_id'].');">ลบคำถาม</button>
+					onclick="checkdel('.$row['quest_ans_id'].');">ลบคำถาม</button>
 					</td></tr>';
 					$number++;
 				}

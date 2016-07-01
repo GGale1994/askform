@@ -28,8 +28,9 @@
     //printf("Error: %s\n", mysqli_error($conn));
 	$row = mysqli_fetch_array($result);
 
-	$queryadd2 = "INSERT quest_ans(user_id_fk,question) VALUES ('".$row['user_id']."','".$_POST['question']."')";
+	$queryadd2 = "INSERT quest_ans(user_id_fk,question,questsub_datetime) VALUES ('".$row['user_id']."','".$_POST['question']."','".date("Y-m-d h:i:s")."')";
 	$conn->query($queryadd2);
+	//printf("Error: %s\n", mysqli_error($conn));
  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0044)http://mis.lib.nu.ac.th/libcrm/form_ask.html -->
@@ -90,7 +91,7 @@
 			<ul style="margin-left:40px">
 				<div class="row">
 				<div class="col-md-5">
-				<label class="form-group" for="element_1" >ชื่อ (Firstname)</label>
+				<label class="form-group" for="element_1" >ชื่อ (First name)</label>
 				<span>
 				<p><?php echo $_POST['fname'] ?></p>
 				<br>
@@ -98,7 +99,7 @@
 
 
 				<div class="col-md-5">
-				<label class="form-group" for="element_1">นามสกุล (Lastname)</label>
+				<label class="form-group" for="element_1">นามสกุล (Last name)</label>
 				<p><?php echo $_POST['lname'] ?></p><br>
 
 

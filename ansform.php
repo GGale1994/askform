@@ -53,26 +53,39 @@
 
 	<div id="form_container">
 		<div class="col-md-3">
+			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2"><a href="ansselect.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+				</div>
 		</div>
 		<div class="col-md-6 bg2" style="padding-top: 25px;">
-		<form role="form" id="form_163542" class="appnitro" method="post" action="">
+		<form role="form" id="form_163542" class="appnitro" method="post" action="ansadd.php">
 					<div class="form-group">
 					<h3 style="padding-left: 130px; padding-bottom: 25px;"><strong>ตอบแบบสอบถาม (</strong><strong>Answer Question)</strong></h3>
 					
 		</div>
+		<?php 
+
+			$select = "SELECT * FROM user_info WHERE user_id = ".$_POST['user_id']."";
+			$result = $conn->query($select);
+			$row = mysqli_fetch_array($result);
+
+			$select2 = "SELECT * FROM quest_ans WHERE quest_ans_id = ".$_POST['quest_ans_id']."";
+			$result2 = $conn->query($select2);
+			$row2 = mysqli_fetch_array($result2);
+
+		 ?>
 			<ul style="margin-left:40px">
 				<div class="row">
 				<div class="col-md-5">
-				<label class="form-group" for="element_1" >ชื่อ (Firstname)</label>
+				<label class="form-group" for="element_1" >ชื่อ (First name)</label>
 				<span>
-				<p><?php echo $_POST['fname'] ?></p>
+				<p><?php echo $row['fname']; ?></p>
 				<br>
 				</span></div>
 
 
 				<div class="col-md-5">
-				<label class="form-group" for="element_1">นามสกุล (Lastname)</label>
-				<p><?php echo $_POST['lname'] ?></p><br>
+				<label class="form-group" for="element_1">นามสกุล (Last name)</label>
+				<p><?php echo $row['lname']; ?></p><br>
 
 
 		</div></div>
@@ -81,41 +94,50 @@
 		<div class="col-md-5">
 		<label class="form-group" for="element_2" >อีเมล (E-mail)</label>
 		<div>
-			<p><?php echo $_POST['email'] ?></p><br>
+			<p><?php echo $row['email']; ?></p><br>
 		</div></div>
 
 
 		<div class="col-md-5">
 		<label class="form-group" for="element_3" >โทรศัพท์ (Telephone)</label>
 
-			<p><?php echo $_POST['tel'] ?></p>	</div></div>
+			<p><?php echo $row['tel']; ?></p>	</div></div>
 
 		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
 		<span>
-			<p><?php echo $status ?></p>
+			<p><?php echo $row['status']; ?></p>
 		</span>
 		<br>
 		<label class="form-group" for="element_7">หน่วยงาน (Institute) </label>
 		<span>
-		<p><?php echo $institute ?></p>
+		<p><?php echo $row['institute']; ?></p>
 		</span>
 		<br><label class="form-group" for="element_4">คำถาม (Question)</label>
 		<div class="row">
 		<div class="col-md-10">
-		<div>
-			<p><?php echo $_POST['question'] ?></p>
+		<span>
+			<p><?php echo $row2['question']; ?></p></span><br>
 		</div></div>
-		</li>
-
-			<br><label class="form-group" for="element_4">คำตอบ (Answer)</label>
+			<?php 
+				$datetime = $row2['questsub_datetime'];
+				$datetime = new DateTime($datetime);
+				$date = $datetime->format('d/m/Y');
+				$time = $datetime->format('H:i:s');
+			 ?>
+		<label class="form-group" for="element_4">ได้รับคำถามเมื่อวันที่&nbsp;:&nbsp;</label><?php echo $date ?>
+		<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลา&nbsp;:&nbsp;</label><?php echo $time ?>
+		<br> <br>
+		
+		<label class="form-group" for="element_4">คำตอบ (Answer)</label>
 		<div class="row">
 		<div class="col-md-10">
-		<div>
-			<p><?php echo $_POST['answer'] ?></p>
+			<textarea name="answer" cols="65" rows="5" class="form-control" id="question" required></textarea>
 		</div></div>
-		</li>
-			   <input type="submit" class="btn btn-default" value="Submit">
+		<br>
+			   <input type="hidden" name="quest_ans_id" value="<?php echo $row2['quest_ans_id']; ?>">
+			   <input type="submit" class="btn btn-default btn-success" value="Submit">
 			   <input id="reset" class="btn btn-danger" type="reset" name="reset" value="Reset">
+			   <a href="ansselect.php" title=""><button class="btn btn-primary" type="button" name="cancel">Cancel</button></a>
 				</tb>
 			  </li>
 			</ul>
@@ -127,7 +149,10 @@
 		<p>โทรสาร 0-2215-3617, 0-2218-2907 </p> E-Mail webmaster@car.chula.ac.th
   </div>
 		</span></div></div>
-	<div class="col-md-3"></div>
+	<div class="col-md-3">
+		<br><div class="row"><div class="col-md-7"></div><div class="col-md-4 bg2"><a href="Login-session/logout.php"><font color="blue" size="3"><p style="float:right">ออกจากระบบ</p></font></a></div></div>
+
+			</div>
 	</div>
 
 
