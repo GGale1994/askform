@@ -53,7 +53,7 @@
 
 	<div id="form_container">
 		<div class="col-md-3">
-			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2"><a href="ansselect.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2"><a href="history.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
 				</div>
 		</div>
 		<div class="col-md-6 bg2" style="padding-top: 25px;">
@@ -64,62 +64,56 @@
 		</div>
 		<?php
 
-			$select = "SELECT * FROM user_info WHERE user_id = ".$_POST['user_id']."";
-			$result = $conn->query($select);
-			$row = mysqli_fetch_array($result);
-
-			$select2 = "SELECT * FROM quest_ans WHERE quest_ans_id = ".$_POST['quest_ans_id']."";
+			$select2 = "SELECT * FROM quest_ans WHERE quest_ans_id = ".$_GET['quest_ans_id']."";
 			$result2 = $conn->query($select2);
-			$row2 = mysqli_fetch_array($result2);
+		  $row = mysqli_fetch_array($result2);
 
 		 ?>
 			<ul style="margin-left:40px">
 				<div class="row">
 				<div class="col-md-5">
-				<label class="form-group" for="element_1" >ชื่อ (First name)</label>
+				<label class="form-group" for="element_1" >คำถาม</label>
 				<span>
-				<p><?php echo $row['fname']; ?></p>
+				<p><?php echo $row['question']; ?></p>
 				<br>
 				</span></div>
 
 
 				<div class="col-md-5">
-				<label class="form-group" for="element_1">นามสกุล (Last name)</label>
-				<p><?php echo $row['lname']; ?></p><br>
+				<label class="form-group" for="element_1">วันที่ได้รับคำถาม</label>
+				<p><?php echo $row['questsub_datetime']; ?></p><br>
 
 
 		</div></div>
 
 		<div class="row">
 		<div class="col-md-5">
-		<label class="form-group" for="element_2" >อีเมล (E-mail)</label>
+		<label class="form-group" for="element_2" >ชื่อผู้ถาม</label>
 		<div>
-			<p><?php echo $row['email']; ?></p><br>
+			<p><?php echo $row['fname']." ".$row['lname']; ?></p><br>
 		</div></div>
 
 
 		<div class="col-md-5">
-		<label class="form-group" for="element_3" >โทรศัพท์ (Telephone)</label>
+		<label class="form-group" for="element_3" >คำตอบ</label>
 
-			<p><?php echo $row['tel']; ?></p>	</div></div>
+			<p><?php echo $row['answer']; ?></p>	</div></div>
 
-		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
+		<label class="form-group" for="element_6">คำตอบ </label>
 		<span>
-			<p><?php echo $row['status']; ?></p>
+			<p><?php echo $row['answer']; ?></p>
 		</span>
 		<br>
-		<label class="form-group" for="element_7">หน่วยงาน (Institute) </label>
+		<label class="form-group" for="element_7">ชื่อผู้ตอบ </label>
 		<span>
-		<p><?php echo $row['institute']; ?></p>
+		<p><?php echo $row['member_name']; ?></p>
 		</span>
-		<br><label class="form-group" for="element_4">คำถาม (Question)</label>
-		<div class="row">
-		<div class="col-md-10">
-		<span>
-			<p><?php echo $row2['question']; ?></p></span><br>
-		</div></div>
+		<br><label class="form-group" for="element_4">วันที่ได้รับคำตอบ</label>
+    <span>
+    <p><?php echo $row['anssub_datetime']; ?></p>
+    </span>
 			<?php
-				$datetime = $row2['questsub_datetime'];
+				$datetime = $row['questsub_datetime'];
 				$datetime = new DateTime($datetime);
 				$date = $datetime->format('d/m/Y');
 				$time = $datetime->format('H:i:s');
@@ -128,16 +122,9 @@
 		<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลา&nbsp;:&nbsp;</label><?php echo $time ?> น.
 		<br> <br>
 
-		<label class="form-group" for="element_4">คำตอบ (Answer)</label>
-		<div class="row">
-		<div class="col-md-10">
-			<textarea name="answer" cols="65" rows="5" class="form-control" id="question" required></textarea>
-		</div></div>
+
 		<br>
-			   <input type="hidden" name="quest_ans_id" value="<?php echo $row2['quest_ans_id']; ?>">
-			   <input type="submit" class="btn btn-default btn-success" value="Submit">
-			   <input id="reset" class="btn btn-danger" type="reset" name="reset" value="Reset">
-			   <a href="ansselect.php" title=""><button class="btn btn-primary" type="button" name="cancel">Cancel</button></a>
+
 				</tb>
 			  </li>
 			</ul>
