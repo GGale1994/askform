@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Ask a Librarian</title>
+<title>Details</title>
 
 <script type="text/javascript" src="./ex_files/view.js"></script>
 <meta charset="utf-8">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="ex_files/animate.css">
 <style type="text/css">
 
 .style1 {color: #FFFFFF}
@@ -41,6 +41,15 @@
 
 }
 
+.bg3{
+	background-color: rgba(191,239,255,0.8);
+	-webkit-border-radius:50px;
+	-moz-border-radius:50px;
+	border-radius:50px;
+
+
+}
+
 .center {
 	float: center;
 }
@@ -53,78 +62,107 @@
 
 	<div id="form_container">
 		<div class="col-md-3">
-			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2"><a href="history.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2 "><a href="history.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
 				</div>
 		</div>
-		<div class="col-md-6 bg2" style="padding-top: 25px;">
-		<form role="form" id="form_163542" class="appnitro" method="post" action="ansadd.php">
+		<div class="col-md-6 bg2 animated fadeIn" style="padding-top: 25px;">
 					<div class="form-group">
-					<h3 style="padding-left: 130px; padding-bottom: 25px;"><strong>ตอบแบบสอบถาม (</strong><strong>Answer Question)</strong></h3>
-
+					<h3 style="padding-left: 220px; padding-bottom: 25px;"><strong>รายละเอียดของผู้ถาม</strong><strong></strong></h3>
+					
 		</div>
-		<?php
+		<?php 
+
+			$select = "SELECT * FROM user_info WHERE user_id = ".$_GET['user_id']."";
+			$result = $conn->query($select);
+			$row = mysqli_fetch_array($result);
 
 			$select2 = "SELECT * FROM quest_ans WHERE quest_ans_id = ".$_GET['quest_ans_id']."";
 			$result2 = $conn->query($select2);
-		  $row = mysqli_fetch_array($result2);
+			$row2 = mysqli_fetch_array($result2);
 
 		 ?>
 			<ul style="margin-left:40px">
+
 				<div class="row">
 				<div class="col-md-5">
-				<label class="form-group" for="element_1" >คำถาม</label>
+				<label class="form-group" for="element_1" >ชื่อ (First name)</label>
 				<span>
-				<p><?php echo $row['question']; ?></p>
+				<p><?php echo $row['fname']; ?></p>
 				<br>
 				</span></div>
 
 
 				<div class="col-md-5">
-				<label class="form-group" for="element_1">วันที่ได้รับคำถาม</label>
-				<p><?php echo $row['questsub_datetime']; ?></p><br>
+				<label class="form-group" for="element_1">นามสกุล (Last name)</label>
+				<p><?php echo $row['lname']; ?></p><br>
 
 
 		</div></div>
 
 		<div class="row">
 		<div class="col-md-5">
-		<label class="form-group" for="element_2" >ชื่อผู้ถาม</label>
+		<label class="form-group" for="element_2" >อีเมล (E-mail)</label>
 		<div>
-			<p><?php echo $row['fname']." ".$row['lname']; ?></p><br>
+			<p><?php echo $row['email']; ?></p><br>
 		</div></div>
 
 
 		<div class="col-md-5">
-		<label class="form-group" for="element_3" >คำตอบ</label>
+		<label class="form-group" for="element_3" >โทรศัพท์ (Telephone)</label>
 
-			<p><?php echo $row['answer']; ?></p>	</div></div>
+			<p><?php echo $row['tel']; ?></p>	</div></div>
 
-		<label class="form-group" for="element_6">คำตอบ </label>
+		<label class="form-group" for="element_6">สถานภาพ (Status) </label>
 		<span>
-			<p><?php echo $row['answer']; ?></p>
+			<p><?php echo $row['status']; ?></p>
 		</span>
 		<br>
-		<label class="form-group" for="element_7">ชื่อผู้ตอบ </label>
+		<label class="form-group" for="element_7">หน่วยงาน (Institute) </label>
 		<span>
-		<p><?php echo $row['member_name']; ?></p>
+		<p><?php echo $row['institute']; ?></p>
 		</span>
-		<br><label class="form-group" for="element_4">วันที่ได้รับคำตอบ</label>
-    <span>
-    <p><?php echo $row['anssub_datetime']; ?></p>
-    </span>
-			<?php
-				$datetime = $row['questsub_datetime'];
+		<br>
+		<label class="form-group" for="element_4">-----------------------------------------------------------------------------------------------------</label><?php 
+				$datetime = $row2['questsub_datetime'];
 				$datetime = new DateTime($datetime);
 				$date = $datetime->format('d/m/Y');
 				$time = $datetime->format('H:i:s');
 			 ?>
-		<label class="form-group" for="element_4">ได้รับคำถามเมื่อวันที่&nbsp;:&nbsp;</label><?php echo $date ?>
+		
+		<h3 style="padding-left: 90px; padding-bottom: 25px;"><strong>รายละเอียดของคำถาม-คำตอบ</strong></h3>
+					
+		
+		<br><label class="form-group" for="element_4"><u>คำถาม (Question)</u></label>
+		<div class="row">
+		<div class="col-md-10">
+		<span>
+			<p><?php echo $row2['question']; ?></p></span>
+		</div></div><label class="form-group" for="element_4">ได้รับคำถามเมื่อวันที่&nbsp;:&nbsp;</label><?php echo $date ?>
 		<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลา&nbsp;:&nbsp;</label><?php echo $time ?> น.
-		<br> <br>
+		
+		<br><br>
+		
+		
+		<?php 
+				$datetime2 = $row2['anssub_datetime'];
+				$datetime2 = new DateTime($datetime2);
+				$date2 = $datetime2->format('d/m/Y');
+				$time2 = $datetime2->format('H:i:s');
+			 ?>
 
+		<label class="form-group" for="element_4"><u>คำตอบ (Answer)</u></label>
+		<div class="row">
+		<div class="col-md-10">
+		<span>
+			<p><?php echo $row2['answer']; ?></p></span>
+		</div></div>
 
-		<br>
-
+		<label class="form-group" for="element_4">ตอบคำถามเมื่อวันที่&nbsp;:&nbsp;</label><?php echo $date2 ?>
+		<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลา&nbsp;:&nbsp;</label><?php echo $time2 ?> น.
+			
+			<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ตอบโดย&nbsp;:&nbsp;</label><?php echo $row2['member_name']; ?><br>
+			   
+			   <a href="history.php" title=""><button class="btn btn-primary" type="button" name="Back">Back</button></a>
 				</tb>
 			  </li>
 			</ul>

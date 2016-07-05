@@ -12,8 +12,9 @@
    <head>
       <title>Welcome to CU Li</title>
     <link href="../ex_files/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../ex_files/animate.css">
    </head>
-   <body>
+   <body class="animated fadeIn">
    
       <div class = "container">
       <div class = "col-md-4">
@@ -31,7 +32,7 @@
                required autofocus></div>
             <div class="form-group"><input type = "password" class = "form-control"
                name = "txtPassword" placeholder = "password" required></div>
-            <div class="form-group"><button class = "btn btn-lg btn-primary btn-block" type = "submit" 
+            <div class="form-group"><button class = "btn btn-lg btn-primary btn-block animated zoomIn" type = "submit" 
                name = "login">เข้าสู่ระบบ</button></div>
             <a href="../askform.html"><img style="padding-left:140px;" src="../ex_files/goback.jpg" alt=""></a>
          </form>

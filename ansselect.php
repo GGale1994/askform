@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="ex_files/animate.css">
 <style type="text/css">
 
 .style1 {color: #FFFFFF}
@@ -50,7 +50,7 @@
 <script language="JavaScript">
 
 function checkdel(id){
-	if(confirm('ท่านมั่นใจว่าต้องการลบคำถามนี้ใช่หรือไม่')==true)
+	if(confirm('คุณมั่นใจว่าต้องการลบคำถามนี้ใช่หรือไม่')==true)
 	{
 		window.location = "deletequest.php?user_id=".concat(id);
 	}
@@ -69,11 +69,21 @@ function checkdel(id){
 			<br><div class="row"><div class="col-md-1"></div><div class="col-md-5 bg2"><a href="index.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
 			</div>
 		</div>
-		<div class="col-md-8 bg2" style="padding-top: 25px;">
+		<div class="col-md-8 bg2 animated fadeIn" style="padding-top: 25px;">
 	
 					<div class="form-group">
 					<h3 style="padding-left: 195px; padding-bottom: 25px;"><strong>เลือกตอบแบบสอบถาม (</strong><strong> Select Question)</strong></h3>
+					<form action="ansselect.php" method="get" accept-charset="utf-8">
+					<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-4">
+					<input class="form-control" type="text" name="keyword" value="" placeholder="Search">
+					</div>
+					<div class="col-md-4">
+					<input class="btn btn-default" type="submit" name="submit" value="Submit"></form>
+					</div>
 					
+					</div>
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div><div class="col-md-10">
@@ -84,22 +94,65 @@ function checkdel(id){
 
 				$selectquery = "SELECT quest_ans.quest_ans_id,user_info.user_id,quest_ans.question,user_info.fname,user_info.lname FROM quest_ans,user_info WHERE user_info.user_id = quest_ans.user_id_fk and quest_ans.answer IS NULL";
 				$result = $conn->query($selectquery);
-				$number = 1;
-				while ($row = mysqli_fetch_array($result)) 
+
+				if(isset($_GET['submit']))
 				{
-					echo '<tr><td>'.$number.'</td><td colspan="3">
-					'.$row['question'].'</td><td colspan="2">'.$row['fname'].' '.$row['lname'].
-					'</td><td colspan="2"><form action="ansform.php" method="post">
-					<input class="btn btn-default btn-success" type="submit" name="submit" value="ตอบคำถาม">
-					<input type="hidden" name="user_id" value='.$row['user_id'].'>
-					<input type="hidden" name="quest_ans_id" value='.$row['quest_ans_id'].'>
-					</form>
-					</td><td>
-					<button class="btn btn-default btn-danger"  name="delete" value=""
-					onclick="checkdel('.$row['quest_ans_id'].');">ลบคำถาม</button>
-					</td></tr>';
-					$number++;
+					if($_GET['keyword'] == ""){
+						echo "<script>alert('โปรดระบุคำค้นหา');</script>";
+					      echo "<script>window.location='ansselect.php';</script>";
+					}
+					else
+					{
+							$key=$_GET['keyword'];
+						$query= "SELECT * FROM user_info,quest_ans WHERE (quest_ans.question LIKE '%".$key."%' or user_info.fname LIKE '%".$key."%' or user_info.lname LIKE '%".$key."%') and user_info.user_id = quest_ans.user_id_fk and quest_ans.answer IS NULL GROUP BY user_info.user_id";
+					    $result = $conn->query($query);
+					    $flag=0;
+						$number = 1;
+					    while($row=mysqli_fetch_array($result))
+					    {
+					      	echo '<tr><td>'.$number.'</td><td colspan="3">
+							'.$row['question'].'</td><td colspan="2">'.$row['fname'].' '.$row['lname'].
+							'</td><td colspan="2"><form action="ansform.php" method="post">
+							<input class="btn btn-default btn-success  animated zoomIn" type="submit" name="submit" value="ตอบคำถาม">
+							<input type="hidden" name="user_id" value='.$row['user_id'].'>
+							<input type="hidden" name="quest_ans_id" value='.$row['quest_ans_id'].'>
+							</form>
+							</td><td>
+							<button class="btn btn-default btn-danger  animated zoomIn"  name="delete" value=""
+							onclick="checkdel('.$row['quest_ans_id'].');">ลบคำถาม</button>
+							</td></tr>';
+							$number++;
+					      	$flag = 1;
+					    }
+
+					    if($flag!=1) 
+					    {
+					      echo "<script>alert('ค้นหาไม่พบ');</script>";
+					      echo "<script>window.location='ansselect.php';</script>";
+					    }
+					}
+					
 				}
+				else
+				{
+					$number = 1;
+					while ($row = mysqli_fetch_array($result)) 
+					{
+						echo '<tr><td>'.$number.'</td><td colspan="3">
+						'.$row['question'].'</td><td colspan="2">'.$row['fname'].' '.$row['lname'].
+						'</td><td colspan="2"><form action="ansform.php" method="post">
+						<input class="btn btn-default btn-success  animated zoomIn" type="submit" name="submit" value="ตอบคำถาม">
+						<input type="hidden" name="user_id" value='.$row['user_id'].'>
+						<input type="hidden" name="quest_ans_id" value='.$row['quest_ans_id'].'>
+						</form>
+						</td><td>
+						<button class="btn btn-default btn-danger  animated zoomIn"  name="delete" value=""
+						onclick="checkdel('.$row['quest_ans_id'].');">ลบคำถาม</button>
+						</td></tr>';
+						$number++;
+					}
+				}	
+				
 
 			 ?>
 			 	</table>

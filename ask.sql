@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2016 at 08:01 AM
+-- Generation Time: Jul 05, 2016 at 09:42 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
+  `email` varchar(60) NOT NULL,
   `LoginStatus` int(1) NOT NULL DEFAULT '0',
   `LastUpdate` datetime NOT NULL DEFAULT '0001-01-01 00:00:00',
   PRIMARY KEY (`UserID`),
@@ -42,9 +43,9 @@ CREATE TABLE IF NOT EXISTS `member` (
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`UserID`, `Username`, `Password`, `Name`, `LoginStatus`, `LastUpdate`) VALUES
-(7, 'admin', 'admin', 'Benz', 1, '2016-07-01 14:53:37'),
-(6, 'admin2', 'admin2', 'Gale', 0, '0001-01-01 00:00:00');
+INSERT INTO `member` (`UserID`, `Username`, `Password`, `Name`, `email`, `LoginStatus`, `LastUpdate`) VALUES
+(7, 'admin', 'admin', 'Benz', 'b.narongrat.hongatsawin@gmail.com', 0, '2016-07-05 16:41:40'),
+(6, 'admin2', 'admin2', 'Gale', '', 0, '0001-01-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -63,16 +64,28 @@ CREATE TABLE IF NOT EXISTS `quest_ans` (
   `anssub_datetime` datetime DEFAULT NULL,
   PRIMARY KEY (`quest_ans_id`),
   KEY `quest_ans_id` (`user_id_fk`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `quest_ans`
 --
 
 INSERT INTO `quest_ans` (`quest_ans_id`, `question`, `answer`, `member_name`, `user_id_fk`, `questsub_datetime`, `anssub_datetime`) VALUES
-(63, 'ยืนหนังสือย้อนหลังจะโดนปรับหรือเปล่าครับ', 'test', 'Benz', 98, '2016-07-20 06:16:00', '2016-07-31 00:00:00'),
-(78, 'ยืนหนังสือย้อนหลังจะโดนปรับหรือเปล่าครับ', 'asdadsadas', 'Benz', 98, '2016-07-01 04:47:49', '2016-07-01 04:49:43'),
-(79, 'ยืนหนังสือย้อนหลังจะโดนปรับหรือเปล่าครับ', NULL, NULL, 98, '2016-07-01 04:55:07', NULL);
+(102, 'สามารถยืมหนังสือต่อทางออนไลน์ได้สูงสุดกี่ครั้งครับ', '2 ครั้งครับ', 'Benz', 142, '2016-07-05 04:17:00', '2016-07-06 05:00:00'),
+(103, 'ช่วงปิดเทอมหอสมุดเปิดกี่โมงครับ', '8.00-19.00 ครับ', 'Gale', 143, '2016-07-07 00:00:00', '2016-07-09 10:20:00'),
+(104, 'หากทำหนังสือเสียหายต้องดำเนินการอย่างไรบ้างครับ', NULL, 'Gale', 144, '2016-07-08 00:00:00', '2016-07-08 08:00:00'),
+(105, 'สามารถนำของกินเข้าไปทานในห้องสมุดได้ไหมครับ', 'ไม่ได้ค่ะ ถ้าจะรับประทานต้องนั่งทานข้างนอกให้หมดก่อนเข้ามาในหอสมุดนะคะ', 'Benz', 145, '2016-07-16 00:00:00', '2016-07-17 06:12:13'),
+(106, 'Learing english from movie มีฉายทุกวันไหนครับ', 'ศุกร์ค่ะ', 'Benz', 146, '2016-07-12 05:00:00', '2016-07-21 09:00:00'),
+(107, 'สามาถยืมหนังสือได้สงสุดครั้งละกี่เล่มครับ', NULL, 'Gale', 147, '2016-07-13 00:00:00', '2016-07-27 09:00:00'),
+(108, 'หอสมุดมีที่ให้นั่งชั้นไหนบ้างครับ', '1 2 3 4 และ 5 ค่ะ', 'Benz', 148, '2016-07-21 00:00:00', '2016-08-01 00:00:00'),
+(109, 'ห้องสมุดมีอุปกรณ์อะไรให้ยืมใช้บ้างครับ', NULL, 'Benz', 149, '2016-07-05 18:32:00', '2016-07-20 11:22:43'),
+(110, 'ห้องสมุดรับนักศึกษาฝึกงานไหมครับ', NULL, 'Gale', 150, '2016-07-07 00:00:00', '2016-07-30 00:00:00'),
+(111, 'สัปดาห์นี้ที่ห้องสมุดมีหนังเรื่องอะไรฉายครับ', 'Goosebump ค่ะ', 'Gale', 151, '2016-07-30 00:00:00', '2016-07-31 00:00:00'),
+(112, 'จองห้องค้นคว้ายังไงเหรอครับ', NULL, 'Gale', 152, '2016-07-27 10:32:54', '2016-07-30 00:00:00'),
+(113, 'หยุดยาว 5 วันห้องสมุดปเปิดไหมครับ', NULL, 'Benz', 153, '2016-07-01 00:00:00', '2016-07-15 00:00:00'),
+(114, 'เลยเวลาคืนหนังสือแล้วต้องเสียค่าปรับยังไงบ้างครับ', NULL, 'Benz', 154, '2016-07-16 00:00:00', '2016-07-30 00:00:00'),
+(115, 'คอมพิวเตอร์มีให้บิรการชั้นไหนบ้างครับ', NULL, 'Gale', 155, '2016-08-01 00:00:00', '2016-08-02 00:00:00'),
+(116, 'เครื่อง MAC มีให้บริการชั้นไหนบ้างครับ', NULL, 'Benz', 156, '2016-07-14 00:00:00', '2016-07-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -90,33 +103,28 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   `status` varchar(80) NOT NULL COMMENT 'สถานภาพ',
   `institute` varchar(80) NOT NULL COMMENT 'หน่วยงาน',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_info`
 --
 
 INSERT INTO `user_info` (`user_id`, `fname`, `lname`, `email`, `tel`, `status`, `institute`) VALUES
-(98, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(99, 'asd', 'asd', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(100, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(101, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'มหาวิทยาลัย/หน่วยงานอื่น(มหาวิทยาลัยเชียงใหม่)'),
-(102, 'asdasd', 'ddsa', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(103, 'qwe', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(104, 'พิทักษ์q', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(105, 'พิทักษ์asd', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(106, 'พิทักษ์qwewq', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(107, 'ณรงค์รัชต์', 'หงส์อัศวิน', 'bbbenz@gmail.com', '0892015555', 'นิสิต ป.ตรี  (Undergraduate)', 'มหาวิทยาลัย/หน่วยงานอื่น(มหาวิทยาลัยเชียงใหม่)'),
-(108, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(109, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'มหาวิทยาลัยเชียงใหม่', 'มหาวิทยาลัย/หน่วยงานอื่น(มหาวิทยาลัยเชียงใหม่)'),
-(110, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(111, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(112, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(113, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(114, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(116, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(117, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์'),
-(118, 'พิทักษ์', 'กำเนิดชัย', 'pitak_gamnerdchai@eiei.com', '0123456789', 'นิสิต ป.ตรี  (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย คณะสหเวชศาสตร์');
+(142, 'ณัฐชนน', 'ศรอากาศ', 'nutchanon.gale@gmail.com', '0899188200', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะสหเวชศาสตร์'),
+(143, 'ณรงค์ชัชต์', 'หงส์อัศวิน', 'b.narongrat.hongatsawin@gmail.com', '0821153459', 'บุคลากรสายปฏิบัติการ (Staff)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University) คณะวิทยาศาตร์  '),
+(144, 'อาณุภาพ', 'จำฟู', 'kidshadow@hotmail.com', '0899989999', 'บัณฑิตศึกษา (Graduate Student)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะวิทยาศาสตร์'),
+(145, 'วรัฏฐา', 'ปูก๋า', 'warattarose@hotmail.com', '0899188201', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะสหเวชศาสตร์'),
+(146, 'คณิน', 'ภูไบ', 'kaninpoobai@gmail.com', '0895236522', 'บัณฑิตศึกษา (Graduate Student)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะวิทยาศาสตร์'),
+(147, 'Ed', 'wall', 'edlol@hotmail.com', '0921152520', 'บุคลากรสายวิชาการ (Faculty)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะแพทยศาสตร์'),
+(148, 'ภานุพงษ์', 'ทันษา', 'panupontansa@gmail.com', '0855545555', 'บัณฑิตศึกษา (Graduate Student)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะนิเทศศาสตร์'),
+(149, 'รวีโรจน์', 'เตียววณิชกุล', 'nongroj38@hotmail.cm', '0897483274', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะแพทย์ศาสตร์'),
+(150, 'ปองวิชญ์', 'กลัดเข็มทอง', 'peachkub@hotmail.com', '0822253333', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University) คณะทันตแพทยศาสตร์  '),
+(151, 'ธนวิช', 'คำโสภา', 'thanasea@gmail.com', '0921155440', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะนิติศาสตร์'),
+(152, 'ไพลิน', 'เผยฉวี', 'pailin@gmail.com', '0898889999', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะแพทยศาสตร์'),
+(153, 'อดิลักษณ์', 'ชูประทีป', 'yo_adiluck@gmail.com', '0921155540', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะวิทยาศาตร์'),
+(154, 'รวีรุจน์', 'เตียววณิชกุล', 'peerut@hotmail.com', '0858853340', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะแพทยศาสตร์'),
+(155, 'แพรวา', 'เตียววณิชกุล', 'prawiez@hotmail.com', '0845521150', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะครุศาสตร์'),
+(156, 'ณัฏฐชา', 'ศรอากาศ', 'fha@gmail.com', '0899188855', 'นิสิต ป.ตรี (Undergraduate)', 'จุฬาลงกรณ์มหาวิทยาลัย (Chulalongkorn University)  คณะแพทยศาสตร์');
 
 --
 -- Constraints for dumped tables

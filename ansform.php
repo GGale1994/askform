@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Ask a Librarian</title>
+<title>Answer Question</title>
 
 <script type="text/javascript" src="./ex_files/view.js"></script>
 <meta charset="utf-8">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="ex_files/animate.css">
 <style type="text/css">
 
 .style1 {color: #FFFFFF}
@@ -53,16 +53,16 @@
 
 	<div id="form_container">
 		<div class="col-md-3">
-			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2"><a href="ansselect.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
+			<br><div class="row"><div class="col-md-1"></div><div class="col-md-3 bg2 "><a href="ansselect.php"><font color="blue" size="3"><p style="float:right">ย้อนกลับ</p></font></a></div>
 				</div>
 		</div>
-		<div class="col-md-6 bg2" style="padding-top: 25px;">
+		<div class="col-md-6 bg2 animated fadeIn" style="padding-top: 25px;">
 		<form role="form" id="form_163542" class="appnitro" method="post" action="ansadd.php">
 					<div class="form-group">
 					<h3 style="padding-left: 130px; padding-bottom: 25px;"><strong>ตอบแบบสอบถาม (</strong><strong>Answer Question)</strong></h3>
-
+					
 		</div>
-		<?php
+		<?php 
 
 			$select = "SELECT * FROM user_info WHERE user_id = ".$_POST['user_id']."";
 			$result = $conn->query($select);
@@ -118,7 +118,7 @@
 		<span>
 			<p><?php echo $row2['question']; ?></p></span><br>
 		</div></div>
-			<?php
+			<?php 
 				$datetime = $row2['questsub_datetime'];
 				$datetime = new DateTime($datetime);
 				$date = $datetime->format('d/m/Y');
@@ -127,15 +127,22 @@
 		<label class="form-group" for="element_4">ได้รับคำถามเมื่อวันที่&nbsp;:&nbsp;</label><?php echo $date ?>
 		<label class="form-group" for="element_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลา&nbsp;:&nbsp;</label><?php echo $time ?> น.
 		<br> <br>
-
+		
 		<label class="form-group" for="element_4">คำตอบ (Answer)</label>
 		<div class="row">
 		<div class="col-md-10">
 			<textarea name="answer" cols="65" rows="5" class="form-control" id="question" required></textarea>
 		</div></div>
 		<br>
+			   <input type="hidden" name="fname" value="<?php echo $row['fname']; ?>">
+			   <input type="hidden" name="lname" value="<?php echo $row['lname']; ?>">
+			   <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
+			   <input type="hidden" name="tel" value="<?php echo $row['tel']; ?>">
+			   <input type="hidden" name="status" value="<?php echo $row['status']; ?>">
+			   <input type="hidden" name="institute" value="<?php echo $row['institute']; ?>">
+			   <input type="hidden" name="question" value="<?php echo $row2['question']; ?>">
 			   <input type="hidden" name="quest_ans_id" value="<?php echo $row2['quest_ans_id']; ?>">
-			   <input type="submit" class="btn btn-default btn-success" value="Submit">
+			   <input type="submit" class="btn btn-default btn-success" name="submit" value="Submit">
 			   <input id="reset" class="btn btn-danger" type="reset" name="reset" value="Reset">
 			   <a href="ansselect.php" title=""><button class="btn btn-primary" type="button" name="cancel">Cancel</button></a>
 				</tb>

@@ -1,6 +1,6 @@
 <?php
 	require("config.php");
-	echo '<script> alert("ระบบจะส่งการร้องขอไปยังบรรณารักษ์ กรุณารอการตอบรับจากบรรณารักษ์ทางอีเมล์ที่ท่านได้กรอกไป")</script>';
+	
 	if($_POST['optradio']!='Other')
 	{
 		$status = $_POST['optradio'];
@@ -31,6 +31,41 @@
 	$queryadd2 = "INSERT quest_ans(user_id_fk,question,questsub_datetime) VALUES ('".$row['user_id']."','".$_POST['question']."','".date("Y-m-d h:i:s")."')";
 	$conn->query($queryadd2);
 	//printf("Error: %s\n", mysqli_error($conn));
+
+	//--------------e-mail------------
+	 
+	if(isset($_POST['submit'])){
+	
+	date_default_timezone_set('Asia/Bangkok');
+ 	require 'PHPMailer/PHPMailerAutoload.php';
+
+ 	$mail = new PHPMailer;
+	$mail->isSMTP();
+	$mail->SMTPDebug = 0;
+	$mail->Debugoutput = 'html';
+	$mail->Host = "smtp.live.com";
+	$mail->Port = 587;
+	$mail->SMTPSecure = 'tls';
+	$mail->SMTPAuth = true;
+	$mail->Username = "t_tofuz_bbbenz@hotmail.com";
+	$mail->Password = "narongrat6";
+	$mail->setFrom('t_tofuz_bbbenz@hotmail.com', 'Narongrat Hongatsawin');
+	$mail->addAddress($_POST['email'], $_POST['fname'].$_POST['lname']); //user
+	$mail->addAddress('t_tofuz_bbbenz@hotmail.com', 'Narongrat Hongatsawin'); //libralian
+	$mail->Subject = 'ถามบรรณารักษ์ (CU Library)';
+	$mail->CharSet = "utf-8";
+    $message = "คุณ " . $_POST['fname'] . " " . $_POST['lname'] . " ได้เขียนคำถามถึงบรรณารักษ์:" . "<br><br><center><h3>" . $_POST['question']."</h3><font color="."red".">**กรุณารอการตอบกลับของบรรณารักษ์ทางอีเมล์นี้**</font></center><br><br><h4> รายละเอียด: </h4> คุณ " . $_POST['fname'] . " " . $_POST['lname'] . " <br>E-mail: ".$_POST['email']." เบอร์โทรศัพท์ : ".$_POST['tel']."<br> สถานภาพ : ".$status." หน่วยงาน : ".$institute;
+	$mail->msgHTML($message);
+
+    if (!$mail->send()) {
+	    echo "Mailer Error: " . $mail->ErrorInfo;
+	} else {
+	    echo '<script> alert("ระบบจะส่งการร้องขอไปยังบรรณารักษ์ กรุณารอการตอบรับจากบรรณารักษ์ทางอีเมล์ที่ท่านได้กรอกไป")</script>';
+	}
+    
+    }
+
+
  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0044)http://mis.lib.nu.ac.th/libcrm/form_ask.html -->
@@ -45,7 +80,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="ex_files/animate.css">
 <style type="text/css">
 
 .style1 {color: #FFFFFF}
@@ -82,7 +117,7 @@
 	<div id="form_container">
 		<div class="col-md-3">
 		</div>
-		<div class="col-md-6 bg2" style="padding-top: 25px;">
+		<div class="col-md-6 bg2 animated fadeIn" style="padding-top: 25px;">
 		
 					<div class="form-group">
 					<h3 style="padding-left: 130px; padding-bottom: 5px;"><strong>ถามบรรณารักษ์ (</strong><strong>Ask a Librarian)</strong></h3>
